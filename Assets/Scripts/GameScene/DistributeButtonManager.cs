@@ -13,6 +13,9 @@ public class DistributeButtonManager : MonoBehaviour {
 
     protected void generateBull(bool isPlayer1, Vector2 buttonPosition) {
         GameObject bull = getBullObject(isPlayer1);
+        if (bull == null) {
+            return;
+        }
 
         GameObject instance = Instantiate(bull, buttonPosition, Quaternion.identity);
         if (isPlayer1) {
@@ -33,6 +36,9 @@ public class DistributeButtonManager : MonoBehaviour {
             size = gameManager.getPlayer1FirstBullSize();
         } else {
             size = gameManager.getPlayer2FirstBullSize();
+        }
+        if (size == -1) {
+            return null;
         }
         GameObject bull;
         if (size == 3f) {

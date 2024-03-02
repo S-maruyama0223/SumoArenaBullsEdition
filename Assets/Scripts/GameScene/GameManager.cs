@@ -3,18 +3,23 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class GameManager : MonoBehaviour {
+public class GameManager : MonoBehaviour
+{
 
     private List<int> player1Bulls;
     private List<int> player2Bulls;
     private CanvasManager canvasManager;
     private int player1Score;
     public int Player1Score {
-        get { return this.player1Score; }
+        get {
+            return this.player1Score;
+        }
     }
     private int player2Score;
     public int Player2Score {
-        get { return this.player2Score; }
+        get {
+            return this.player2Score;
+        }
     }
 
     // Start is called before the first frame update
@@ -28,13 +33,16 @@ public class GameManager : MonoBehaviour {
 
     private List<int> initBullsOrder() {
         //牛のストック 大4, 中6, 小10
+        //int[] bulls = {
+        //    3, 3, 2, 2, 1, 1, 1,
+        //    3, 2, 2, 1, 1, 1, 1,
+        //    3, 2, 2, 1, 1, 1
+        //};
         int[] bulls = {
-            3, 3, 2, 2, 1, 1, 1,
-            3, 2, 2, 1, 1, 1, 1,
-            3, 2, 2, 1, 1, 1
+            3,2,1,3,2,1
         };
         List<int> randomList = bulls
-            .OrderBy(i => System.Guid.NewGuid())
+            //.OrderBy(i => System.Guid.NewGuid())
             .ToList();
         Debug.Log(string.Join(",", randomList));
         return randomList;
@@ -43,22 +51,36 @@ public class GameManager : MonoBehaviour {
     public int getPlayer1FirstBull() {
         int first = player1Bulls[0];
         player1Bulls.RemoveAt(0);
-        canvasManager.updatePreviews(player1Bulls[0], true); // この時渡すのはfirstではない
+        if (player1Bulls.Count != 0) {
+            canvasManager.updatePreviews(player1Bulls[0], true); // この時渡すのはfirstではない
+        } else {
+            canvasManager.updatePreviews(-1, true); // この時渡すのはfirstではない
+        }
         return first;
     }
 
     public int getPlayer1FirstBullSize() {
+        if (player1Bulls.Count == 0) {
+            return -1;
+        }
         return player1Bulls[0];
     }
 
     public int getPlayer2FirstBullSize() {
+        if (player2Bulls.Count == 0) {
+            return -1;
+        }
         return player2Bulls[0];
     }
 
     public int getPlayer2FirstBull() {
         int first = player2Bulls[0];
         player2Bulls.RemoveAt(0);
-        canvasManager.updatePreviews(player2Bulls[0], false);// この時渡すのはfirstではない
+        if (player2Bulls.Count != 0) {
+            canvasManager.updatePreviews(player2Bulls[0], false);// この時渡すのはfirstではない
+        } else {
+            canvasManager.updatePreviews(-1, false); // この時渡すのはfirstではない
+        }
         return first;
     }
 

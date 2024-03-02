@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public static class CommonHelper {
+public static class CommonHelper
+{
 
     private static Dictionary<int, List<Bull>> bullGroupMap = new Dictionary<int, List<Bull>>();
     private static int groupSequenceId = 0;
@@ -18,9 +19,12 @@ public static class CommonHelper {
         float player2TotalPower = bullGroup.Where(b => !b.IsPlayer1).Select(b => b.Power).Sum();
         int superior;
         // 0なら拮抗、1ならプレイヤー１優勢、2ならプレイヤー２優勢
-        if (player1TotalPower == player2TotalPower) superior = 0;
-        else if (player1TotalPower > player2TotalPower) superior = 1;
-        else superior = 2;
+        if (player1TotalPower == player2TotalPower)
+            superior = 0;
+        else if (player1TotalPower > player2TotalPower)
+            superior = 1;
+        else
+            superior = 2;
 
         if (superior == 0) {
             foreach (Bull bull in bullGroup) {

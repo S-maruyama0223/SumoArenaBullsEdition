@@ -15,6 +15,7 @@ public class Previews : MonoBehaviour {
     public void updatePreview(int bullSize) {
         if (bullSize == -1) {
             transform.GetChild(0).GetComponent<Image>().color = new Color();
+            return;
         }
         transform.GetChild(0).GetComponent<Image>().color = CommonConstant.bullColors[bullSize - 1];
     }
