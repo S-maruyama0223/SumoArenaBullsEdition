@@ -1,4 +1,4 @@
-﻿using System;
+﻿   using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -33,7 +33,6 @@ public static class CommonHelper
         } else if (superior == 1) {
             float powerRate = player2TotalPower / player1TotalPower;
             float endBullSpeed = bullGroup.FindLast(b => b.IsPlayer1).BaseSpeed;
-            // superiorが1ということはpowerRateが1より大きいので、比率を出すために1で割った数をかけて全体のスピードを出す
             // この時のスピードは相手のpowerに押し返されたpowerなので1 - powerRateをする
             // たとえば70:40の場合、押し返す力は30になる。
             float speed = endBullSpeed * (1 - powerRate);
