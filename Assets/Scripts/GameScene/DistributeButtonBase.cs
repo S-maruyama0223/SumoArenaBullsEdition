@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DistributeButtonManager : MonoBehaviour {
+public class DistributeButtonBase : MonoBehaviour {
 
     private GameManager gameManager;
     private List<Bull> ownFormationBulls;
@@ -40,17 +40,17 @@ public class DistributeButtonManager : MonoBehaviour {
         if (size == -1) {
             return null;
         }
+
         GameObject bull;
         if (size == 3f) {
-            bull = (GameObject)Resources.Load(CommonConstant.LARGE_SHEEP_PREFAB);
+            bull = (GameObject)Resources.Load(CommonConstant.LARGE_ANIMAL_PREFAB);
         } else if (size == 2f) {
-            bull = (GameObject)Resources.Load(CommonConstant.MIDIUM_SHEEP_PREFAB);
+            bull = (GameObject)Resources.Load(CommonConstant.MEDIUM_ANIMAL_PREFAB);
         } else {
-            bull = (GameObject)Resources.Load(CommonConstant.SMALL_SHEEP_PREFAB);
+            bull = (GameObject)Resources.Load(CommonConstant.SMALL_ANIMAL_PREFAB);
         }
         if (bull == null) {
-            Debug.Log("生成されませんでした");
-            return null;
+            throw new System.Exception("生成されませんでした");
         }
         return bull;
     }
@@ -59,7 +59,7 @@ public class DistributeButtonManager : MonoBehaviour {
         float targetSpeed
             = (size == 3f) ? CommonConstant.LARGE_SHEEP_SPEED
             : (size == 1f) ? CommonConstant.SMALL_SHEEP_SPEED
-            : CommonConstant.MIDIUM_SHEEP_SPEED;
+            : CommonConstant.MEDIUM_SHEEP_SPEED;
         return (size, targetSpeed);
     }
 }

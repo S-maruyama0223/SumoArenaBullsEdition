@@ -10,6 +10,7 @@ TagManager:
   - CanvasManager
   - Player2Score
   - Player1Score
+  - TitleSceneManager
   layers:
   - Default
   - TransparentFX

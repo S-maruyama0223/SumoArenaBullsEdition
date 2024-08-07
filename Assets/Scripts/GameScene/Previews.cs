@@ -5,19 +5,24 @@ using UnityEngine.UI;
 
 public class Previews : MonoBehaviour {
 
-    // TODO:後々数値決め打ちではなく、Previewの数に合わせる
-    private const int previewCount = 1;
-
     void Start() {
 
     }
 
     public void updatePreview(int bullSize) {
         if (bullSize == -1) {
-            transform.GetChild(0).GetComponent<Image>().color = new Color();
             return;
         }
-        transform.GetChild(0).GetComponent<Image>().color = CommonConstant.bullColors[bullSize - 1];
+
+        Sprite preImage;
+        if (bullSize == 1) preImage = Resources.Load<Sprite>(CommonConstant.SMALL_IMAGE);
+        else if (bullSize == 2) preImage = Resources.Load<Sprite>(CommonConstant.MEDIUM_IMAGE);
+        else preImage = Resources.Load<Sprite>(CommonConstant.LARGE_IMAGE);
+
+
+        foreach (Image preview in gameObject.GetComponentsInChildren<Image>()) {
+            preview.sprite = preImage;
+        }
     }
 
 }

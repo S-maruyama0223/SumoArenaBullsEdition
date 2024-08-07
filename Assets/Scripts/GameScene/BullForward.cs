@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BullForward : MonoBehaviour {
     private void OnTriggerEnter2D(Collider2D collision) {
-        if (!collision.name.Contains("Sheep")) {
+        if (!collision.name.Contains("Animal")) {
             return;
         }
 

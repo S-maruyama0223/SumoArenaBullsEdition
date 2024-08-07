@@ -4,12 +4,12 @@ using System.Collections;
 /// ボタンを押したときに実際に動くクラス
 /// player1,2で二つ存在する
 /// </summary>
-public class DistributeButtonImple : DistributeButtonManager {
+public class DistributeButtonImple : DistributeButtonBase {
 
     [SerializeField] private GameObject distributeArea;
     private DistributeArea distributeAreaScript;
     private bool isPlayer1;
-    private TimerManager timerManager;
+    private BullsTimerManager timerManager;
 
     protected new void Start() {
         isPlayer1 = transform.parent.name.Contains("Player1");

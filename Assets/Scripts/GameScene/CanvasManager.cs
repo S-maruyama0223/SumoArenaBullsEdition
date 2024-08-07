@@ -8,6 +8,7 @@ public class CanvasManager : MonoBehaviour {
     private Previews player2Previews;
     private GameObject player1Score;
     private GameObject player2Score;
+    [SerializeField] GameObject countDownText;
 
     // Start is called before the first frame update
     void Start() {

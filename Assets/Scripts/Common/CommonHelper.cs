@@ -12,6 +12,7 @@ public static class CommonHelper
 
     public static void calcSpeed(int groupId) {
         if (groupId == -1) {
+            // グループ化されてない羊は計算しない
             return;
         }
         List<Bull> bullGroup = bullGroupMap[groupId];
@@ -118,8 +119,6 @@ public static class CommonHelper
             me.GroupId = forwardFellowBull.GroupId;
         }
         // 前方の仲間がグループ化されていない場合は敵と衝突していないので、何もしない。
-
-        // TODO: スピードとパワーの再計算を行う
     }
 
 }

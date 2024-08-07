@@ -4,8 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 
-public class TimerManager : MonoBehaviour
-{
+public abstract class BullsTimerManager : MonoBehaviour {
     [SerializeField] protected GameObject timer;
     protected Image timerGauge;
     protected bool isPlayer1;
@@ -19,11 +18,11 @@ public class TimerManager : MonoBehaviour
     }
     // Start is called before the first frame update
     protected void Start() {
-            timerGauge = timer.GetComponent<Image>();
+        timerGauge = timer.GetComponent<Image>();
     }
 
     // Update is called once per frame
-    void Update() {
+    void FixedUpdate() {
         if (!generatable) {
             remainingTime -= Time.deltaTime;
             timerGauge.fillAmount = remainingTime / unGeneratableTime;
